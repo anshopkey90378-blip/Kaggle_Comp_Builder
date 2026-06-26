@@ -135,3 +135,21 @@ Success criteria:
 3. Implement world memory and factory-first movement.
 4. Add reservation-based movement before adding aggressive resource collection.
 5. Iterate with local scenarios, then use Kaggle submissions sparingly for validation and rating feedback.
+
+## Current Implementation
+
+The repository now contains a runnable Python baseline in `agent.py`. It provides the Kaggle-style `agent(observation, configuration=None)` entry point, robust observation parsing, persistent map memory, reservation-aware movement selection, and a small BFS pathfinder that future strategy modules can reuse.
+
+### Run Local Checks
+
+Install development dependencies if needed:
+
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+Run the smoke test suite:
+
+```bash
+pytest -q
+```
