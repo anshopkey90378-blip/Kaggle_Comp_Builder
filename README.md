@@ -153,3 +153,16 @@ Run the smoke test suite:
 ```bash
 pytest -q
 ```
+
+## Thank You Guide: How We Move Forward
+
+Thank you for the Maze Crawler details. The project now has a starting bot plus a local smoke runner, so the safest development loop is:
+
+1. Run `pytest -q` before every strategy change.
+2. Run `python -m local_runner --scenario open_field --turns 10` to verify the agent can survive simple repeated turns.
+3. Run `python -m local_runner --scenario blocked_factory --turns 10` to check wall avoidance behavior.
+4. Run `python -m local_runner --scenario narrow_corridor --turns 10` to check that unit movement does not collapse into duplicate positions.
+5. Adapt `format_move` in `agent.py` if the official Kaggle environment expects a different action schema.
+6. After the official observation/action schema is confirmed, replace the local scenario assumptions with real environment fixtures and keep the same tests as regression coverage.
+
+The next strategic build target is worker wall-clearing support for blocked factory paths, followed by scout resource pickup and safe return-to-factory behavior.
